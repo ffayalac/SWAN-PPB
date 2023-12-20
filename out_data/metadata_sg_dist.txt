@@ -1,0 +1,3 @@
+start lon [deg]: 144.3, start lat [deg]: -38.4 
+dx [deg]: 0.01, dy [deg]: 0.01 
+meshes in lon: 90, meshes in lat: 60

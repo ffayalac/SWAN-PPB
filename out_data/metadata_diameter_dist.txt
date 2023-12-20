@@ -1,0 +1,7 @@
+start lon [deg]: 144.3, start lat [deg]: -38.4 
+dx [deg]: 0.001, dy [deg]: 0.001 
+meshes in lon: 900, meshes in lat: 600start lon [deg]: 144.3, start lat [deg]: -38.4 
+dx [deg]: 0.01, dy [deg]: 0.01 
+meshes in lon: 90, meshes in lat: 60start lon [deg]: 144.3, start lat [deg]: -38.4 
+dx [deg]: 0.1, dy [deg]: 0.1 
+meshes in lon: 9, meshes in lat: 6
