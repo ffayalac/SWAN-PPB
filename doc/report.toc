@@ -1,0 +1,13 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
+\contentsline {section}{\numberline {2}Methodology}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Numerical modelling framework}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Model setup}{5}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Bathymetric processing}{5}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Computational mesh}{5}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Model Forcing}{5}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Experiments}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Buoy measurements}{7}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Model calibration and validation}{8}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Simulations results}{9}{section.3}%
+\contentsline {section}{\numberline {4}Conclusions and recommendations}{10}{section.4}%
