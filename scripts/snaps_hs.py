@@ -74,21 +74,21 @@ ax.plot(np.transpose(xgrid),np.transpose(ygrid),c='firebrick',transform=constant
 ax.plot(lon_shoreline,lat_shoreline,c='k',transform=constants.CRS_UTM55,label='Shoreline')
 ax.set(xlabel='East [m, GDA z55]',ylabel='North [m, GDA z55]',ylim=PPB_set['ylim'],xlim=PPB_set['xlim'],xticks=PPB_set['xticks'],
         yticks=PPB_set['yticks'])
-ax.set_title('Bathymetry in PPB - SWAN')
+ax.set_title('Curvilinear grid for PPB - SWAN')
 ax.ticklabel_format(style='sci',scilimits=(0,0),axis='both',useMathText=True)
 plt.savefig(f'{top_level_dir}/plots/grid_SWAN.pdf',dpi=700,bbox_inches='tight',pad_inches=0.05)
 
 # Plotting Hs file
 
-fig,ax=plt.subplots(1,1,figsize=(11,6),subplot_kw={'projection': constants.CRS_UTM55})
-cf=ax.contourf(xgrid,ygrid,hs)
-ax.plot(lon_shoreline,lat_shoreline,c='k',transform=constants.CRS_UTM55,label='Shoreline')
-ax.set(xlabel='East [m, GDA z55]',ylabel='North [m, GDA z55]',ylim=PPB_set['ylim'],xlim=PPB_set['xlim'],xticks=PPB_set['xticks'],
-        yticks=PPB_set['yticks'])
-ax.set_title(f'Hs in PPB - {plot_date.strftime("%Y-%m-%d %H:%M:%S")} ({sim})')
-ax.ticklabel_format(style='sci',scilimits=(0,0),axis='both',useMathText=True)
-cax= fig.add_axes([ax.get_position().x1+0.02,ax.get_position().y0,0.01,ax.get_position().height])
-cbar=plt.colorbar(cf,cax=cax,orientation="vertical")
-cbar.set_label('Hs [m]')
-plt.savefig(f'{top_level_dir}/plots/hs_SWAN_{dic_sim_names[sim]}_{plot_date.strftime("%y%m%d%H")}.pdf',dpi=700,bbox_inches='tight',pad_inches=0.05)
+# fig,ax=plt.subplots(1,1,figsize=(11,6),subplot_kw={'projection': constants.CRS_UTM55})
+# cf=ax.contourf(xgrid,ygrid,hs)
+# ax.plot(lon_shoreline,lat_shoreline,c='k',transform=constants.CRS_UTM55,label='Shoreline')
+# ax.set(xlabel='East [m, GDA z55]',ylabel='North [m, GDA z55]',ylim=PPB_set['ylim'],xlim=PPB_set['xlim'],xticks=PPB_set['xticks'],
+#         yticks=PPB_set['yticks'])
+# ax.set_title(f'Hs in PPB - {plot_date.strftime("%Y-%m-%d %H:%M:%S")} ({sim})')
+# ax.ticklabel_format(style='sci',scilimits=(0,0),axis='both',useMathText=True)
+# cax= fig.add_axes([ax.get_position().x1+0.02,ax.get_position().y0,0.01,ax.get_position().height])
+# cbar=plt.colorbar(cf,cax=cax,orientation="vertical")
+# cbar.set_label('Hs [m]')
+# plt.savefig(f'{top_level_dir}/plots/hs_SWAN_{dic_sim_names[sim]}_{plot_date.strftime("%y%m%d%H")}.pdf',dpi=700,bbox_inches='tight',pad_inches=0.05)
 
