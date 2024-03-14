@@ -16,8 +16,8 @@ import constants
 
 # ------------ User changes --------------------- #
 
-sim_to_compare1='madsen'
-sim_to_compare2='smith s2.65 d0.1'
+sim_to_compare1='smith s2.65 d0.01'
+sim_to_compare2='smith s2.75 d0.01'
 
 period = ['2021-10-1 00:00:00','2021-11-1 00:00:00']   
 # period = ['2021-10-23 00:00:00','2021-11-1 00:00:00'] 
