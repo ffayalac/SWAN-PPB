@@ -16,8 +16,8 @@ import constants
 
 # ------------ User changes --------------------- #
 
-sim_to_compare1='smith s2.65 d0.01'
-sim_to_compare2='smith s2.75 d0.01'
+sim_to_compare1='madsen'
+sim_to_compare2='smith s2.65 d0.1'
 
 period = ['2021-10-1 00:00:00','2021-11-1 00:00:00']   
 # period = ['2021-10-23 00:00:00','2021-11-1 00:00:00'] 
@@ -112,7 +112,7 @@ def time_series(stations_PPB,period,ts_to_compare1,ts_to_compare2,presentation_m
     vert=lambda x: 'horz' if x==True else 'vert' 
     fig.savefig(f'{plots_dic}hs_series/{sim_to_compare1}_vs_{sim_to_compare2}_{vert(presentation_mode)}.png',dpi=800)
 
-time_series(stations_PPB,period,ts_to_compare1,ts_to_compare2,True)
+time_series(stations_PPB,period,ts_to_compare1,ts_to_compare2,False)
 # time_series(stations_PPB,period,ts_to_compare1,ts_to_compare2,False)
 
 def scatter_plot(stations_PPB,period,ts_to_compare1,ts_to_compare2,presentation_mode):
@@ -182,4 +182,4 @@ def scatter_plot(stations_PPB,period,ts_to_compare1,ts_to_compare2,presentation_
     fig.savefig(f'{plots_dic}scatter/{sim_to_compare1}_vs_{sim_to_compare2}_{vert(presentation_mode)}_sca.png',dpi=800)
 
 # scatter_plot(stations_PPB,period,ts_to_compare1,ts_to_compare2,False)
-scatter_plot(stations_PPB,period,ts_to_compare1,ts_to_compare2,True)
+scatter_plot(stations_PPB,period,ts_to_compare1,ts_to_compare2,False)
