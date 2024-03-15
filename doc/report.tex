@@ -71,7 +71,7 @@ citestyle=apa,
 
 \counterwithin{figure}{section}
 
-\title{\vspace{-2cm} \Large Port Phillip Bay Wave-Hydrodynamic (SCHISM - WWM) Modelling}
+\title{\vspace{-2cm} \Large Port Phillip Bay Wave-Hydrodynamic Modelling: Effects of the bottom friction and vegetation on the wave dumping}
 
 \author[1]{\normalsize Franklin F. Ayala}
 \author[1]{Huy Quang Tran}
@@ -89,13 +89,13 @@ citestyle=apa,
 \maketitle
 
 \section*{Executive summary}
-This report summaries  the work done in Stage 1 of the Wave-Hydrodynamic Modelling research project funded by the Department of Energy, Environment and Climate Action (DEECA). It focuses on updating the Port Phillip Bay  (PPB) wave-ocean hindcast datasets extented to 5 different SLR scenarios (0.0 m, 0.5 m, 0.8 m, 1.1 m and 1.4 m) and up to 32 years (1990-2021) using the state of the art wave physics (ST6) and the newly ERA5 atmospheric forcing field with the wind field locally scaled up to optimise the wave model performance which was validated against the operational wave buoy network recently deployed within the Bay.  From hourly modelled hindcast outputs, different percentiles and extreme levels were estimated for every grid point as well as  different contour lines (e.g. at different water depth or different distance to the shoreline). It is expected that this  dataset would be an useful resource for various applications within PPB in the year to come.  Although every effort has been made to produce a high quality hindcast dataset up to present time, it is also possible that a new version of this dataset will be made available when there is a new or an improved atmospheric product released to the public (e.g. ERA 6).\\
+This report summaries  the work done for the analysis of the effects of the bottom friction and vegetation in the wave dumping as part of the Wave-Hydrodynamic Modelling research project funded by the Department of Energy, Environment and Climate Action (DEECA). It focuses on the evaluation of ripples model to quantify the bottom friction in the Port Phillip Bay (PPB) using the state of the art wave physics and the newly ERA5 atmospheric forcing field with the wind field locally scaled up to optimise the wave model performance which was validated against the operational wave buoy network recently deployed within the Bay. The regional wave model exhibits a good performance for all the locations, however, some modifications have to be made in order to include more realistic scenarios in PPB. The inclusion of the vegetation was also tested under the Coupled Ocean-Atmosphere-Wave-Sediment Transport Modeling System (COAWST) but further details have to be defined before moving from the verified vegetation test case to an initial idealised case for PPB. The use of better input information will lead to a most physical-reliable wave propagation in the bay.\\
 
 
 % The Port Phillip Bay (PPB) is arguably one of the most important environmental, social and economic asset in Victoria. In this study, the efforts to improve hydrodynamic climate of PPB is shown with the aid of a coupled high-resolution wave-current numerical modelling system (SCHISM-WWM) using advanced wave physics, the latest ERA5 atmospheric products as forcing conditions and a real-time observational buoy network recently deployed in PPB. The validation results indicate a good agreement between the model and the buoy measurements, even for the most extreme wave event in PPB, where the observed significant wave height $H_s$ exceeded 3.5 m at Mt Eliza. Further, long-term simulations under different sea level scenarios were conducted to hindcast sea state conditions for 32-years period (1990-2021) based on the newly validated modelling system. This data has been used to carried out extreme value analysis (EVA) to estimate 500-,100-,50-, and 20-year return levels of variables such as $H_s$, elevation and current speed for different locations within PPB according to the Victoria’s Resilient Coast guidelines.\\
 
 \noindent
-\textbf{Keywords}: Port Phillip Bay, coupled hydrodynamic model, extreme value analysis
+\textbf{Keywords}: Port Phillip Bay, coupled hydrodynamic model, wave dumping, SWAN, ROMS, COAWST.
 
 
 \newpage
@@ -153,15 +153,17 @@ A broadly-used regional scale wave model is employed in Port Phillip Bay (PPB) t
 
 \subsection{Numerical modelling framework}
 
+All the models presented below were compiled in the general purpose High Performance Computing (HPC) system operated by Research Computing Services at The University of Melbourne (Spartan)
+
 \subsubsection*{Wave model}
 
-SWAN is a numerical model designed for simulating coastal wave dynamics that propagates the wave energy based on the wave action balance equation with sources and sinks using a spectral wave approach, allowing for detailed representation of wave energy across frequencies and directions. Notably, SWAN captures the nonlinear interaction between waves and wind, essential for accurately modelling coastal wave behaviour. It also accounts for shallow-water effects, including wave shoaling and refraction and it can be coupled with hydrodynamic models to study wave-current interactions, providing a comprehensive understanding of coastal processes. The model supports various boundary conditions and flexible grid systems, accommodating different coastal geometries and its reliability is backed by extensive validation against experiments and field measurements. Overall, SWAN is a valuable tool for coastal engineers, researchers, and decision-makers involved in coastal management, offering accurate simulations of complex coastal wave dynamics.
+SWAN is a numerical model designed for simulating coastal wave dynamics that propagates the wave energy based on the wave action balance equation with sources and sinks using a spectral wave approach, allowing for detailed representation of wave energy across frequencies and directions. Notably, SWAN captures the nonlinear interaction between waves and wind, essential for accurately modelling coastal wave behaviour. It also accounts for shallow-water effects, including wave shoaling and refraction and it can be coupled with hydrodynamic models to study wave-current interactions, providing a comprehensive understanding of coastal processes. The model supports various boundary conditions and flexible grid systems, accommodating different coastal geometries and its reliability is backed by extensive validation against experiments and field measurements. Overall, SWAN is a valuable tool for coastal engineers, researchers, and decision-makers involved in coastal management, offering accurate simulations of complex coastal wave dynamics.\\
 
 For the simulations in PPB, the depth-induced breaking was activated \parencite{Battjes1978}, the third-generation physics were also used. Different dissipation expressions by bottom friction were tested \parencite{Madsen_Poon_Graber_1988,Smith2011} and vegetation damping \parencite{Suzuki2011} was also included in some of the runs.
 
 \subsubsection*{Ocean-wave model}
 
-The current-wave interaction is intended to be studied using the modelling system COAWST \parencite{Warner2010}, an open-source model that combines many sophisticated systems that each provide relative earth-system components necessary to investigate the dynamics. Specifically, the COAWST Modeling System includes an ocean component—Regional Ocean Modeling System (ROMS); atmosphere component—Weather Research and Forecast Model (WRF), hydrology component- WRF\textunderscore Hydro; wave components—Simulating Waves Nearshore (SWAN), WAVEWATCHIII, and InWave; a sediment component—the USGS Community Sediment Models; and a sea ice model.
+The current-wave interaction is intended to be studied using the modelling system COAWST \parencite{Warner2010}, an open-source model that combines many sophisticated systems that each provide relative earth-system components necessary to investigate the dynamics. Specifically, the COAWST Modeling System includes an ocean component—Regional Ocean Modeling System (ROMS); atmosphere component—Weather Research and Forecast Model (WRF), hydrology component- WRF\textunderscore Hydro; wave components—Simulating Waves Nearshore (SWAN), WAVEWATCHIII, and InWave; a sediment component—the USGS Community Sediment Models; and a sea ice model. This modelling system was used with the default values presented in each model and the atmospheric, sediment transport and infragavitatory wave models were not included.  
 
 \begin{figure}[h]
     \centering
@@ -170,7 +172,7 @@ The current-wave interaction is intended to be studied using the modelling syste
     \label{fig:coawst_structure}
 \end{figure}
 
-The vegetation module...
+The wave-flow vegetation module is integrated COAWST modeling system, incorporating both a flow model (ROMS) and a wave model (SWAN). The flow model has been adjusted to include posture-dependent three-dimensional drag from plants, in-canopy wave-induced streaming, and the generation of turbulent kinetic energy. The coupling framework was enhanced to exchange vegetation-related variables between the flow and wave models, thereby considering wave energy dissipation due to vegetation.
 
 \begin{figure}[h]
     \centering
@@ -247,9 +249,7 @@ where $D_0$ is the standard diameter size equals to 1 mm and $D$ is the diameter
 \label{fig:diameter_PPB}
 \end{figure}
 
-The highest values of diameter size are in the centre of the bay (close to 1 mm). \textcolor{red}{a brief description of that}
-
-Because of the grain size data resolution neither does not match with the SWAN computation grid nor it is not regular, the information was spatially interpolated into a rectangular grid for PPB. A python script was made to build the regular grid from the cloud point in function of an initial point, horizontal resolution $dx$ and vertical resolution $dy$.
+The highest values of diameter size are in the centre of the bay (close to 1 mm) while lowest diameter sizes are presented in some parts in the north/south. Because of the grain size data resolution neither does not match with the SWAN computation grid nor it is not regular, the information was spatially interpolated into a rectangular grid for PPB. A python script was made to build the regular grid from the cloud point in function of an initial point, longitude resolution $dx$ and latitude resolution $dy$.
 
 \begin{figure}[h]
     \centering
@@ -277,7 +277,7 @@ Clearly, describing the bottom friction and the specific gravity across the bay 
 
 \subsection{Experiments}
 
-In order to check the SWAN performance under different bottom friction parametrizations and to get the most physic reliable configuration, a set of experiments was purposed:
+In order to check the SWAN performance under different bottom friction parametrizations and to get the most physic reliable configuration, a set of experiments was purposed.
 
 \begin{table}[h]
 \begin{tabular}{|c|c|c|c|c|}
@@ -313,14 +313,10 @@ Figure \ref{fig:pre_processing} shows the  measured $H_{s}$ time series  from ea
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.5]{plots/maps/buoy_despiked.pdf}
+    \includegraphics[scale=0.45]{plots/maps/buoy_despiked.pdf}
     \caption{Comparisons of the raw and processed (despiked) $H_{s}$ time series for each buoy location in PPB.}
     \label{fig:pre_processing}
 \end{figure}
-
-\subsection{Model calibration and validation}
-
-An initial simulation for one-month period (from 01/10/2021 to 01/11/2021) was conducted with the purpose of validating the wave model against buoy observations. Those previous results showed an overall overestimation of $H_{s}$ at most of the buoy locations. Additionally, the wave height was underestimated by the model at the Mt. Eliza station during a storm event on October 28, 2021.
 
 % A second simulation was carried out over the same period of time, with no scaling factor applied to the wind speed used in the model. This modification improved the estimation of the $H_{s}$ values in each buoy in comparison with the wind scaling factor simulation, but $H_{s}$ values for most buoys remained overestimated as well as the underestimation of the storm event recorded in Mt. Eliza in late October.
 
@@ -344,11 +340,18 @@ An initial simulation for one-month period (from 01/10/2021 to 01/11/2021) was c
 %   \label{fig:qqplot}
 % \end{figure}
 
-\newpage
+\section{Simulations results using different bottom friction parametrizations}
 
-\section{Simulations results about different bottom friction}
+An initial simulation for one-month period (from 01/10/2021 to 01/11/2021) was conducted with the purpose of validating the wave model against buoy observations. A minimap is presented to guide the reader throughout the location of the stations in PPB and its correspondence with the $H_s$ series. 
 
-Initially the experiments \textbf{madsen} and \textbf{smith s2.65 d0.1} were compared to have a general perspective of the model performance for the simulation period. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.35]{plots/maps/coastline_miniature.png}
+    \caption{Minimap with symbols for each station in PPB}
+    \label{fig:minimap}
+\end{figure}
+
+Firstly, the experiments \textbf{madsen} and \textbf{smith s2.65 d0.1} were compared to have a general perspective of the model performance for the simulation period.
 
 \begin{figure}[H]
     \centering
@@ -366,9 +369,9 @@ Both experiments represent correctly the $H_s$ variability along the simulation 
     \label{fig:scatter_madsen_vs_smith_def}
 \end{figure}
 
-The differences between the experiments at the peaks do not have a strong influence in the skill metrics of the model as it presented in the scatter plots. The only change happens in the RMSE values for the Mt Eliza station where the \textbf{smith s2.65 d0.1} experiment has a value of 0.14 while \textbf{madsen} experiment has 0.15. Sandringham is the station with the largest positive bias which indicates an systematic $H_s$ underestimation. \textcolor{red}{statement about smith better than madsen}.\\
+The differences between the experiments at the peaks do not have a strong influence in the skill metrics of the model as it presented in the scatter plots (see fig. \ref{fig:scatter_madsen_vs_smith_def}). The only change happens in the RMSE values for the Mt Eliza station where the \textbf{smith s2.65 d0.1} experiment has a value of 0.14 while \textbf{madsen} experiment has 0.15. Sandringham is the station with the largest positive bias which indicates an systematic $H_s$ underestimation. The possible presence of ripples in some areas in PPB would be best described by the \textcite{Smith2011} which would explain its slight better performance.\\
 
-The following experiment is smith s2.65 d0.78 which employs a more realistic diameter grain size of 0.78mm for the bay because is computed as the mean value for the entire area according to the dataset. This experiment is compared with \textbf{smith s2.65 d0.1} to establish a comparison about how the changes on the diameter grain size can affect the estimation of $H_s$ for the simulation period. The $H_s$ series are presented below.
+The following experiment is \textbf{smith s2.65 d0.78} which employs a more realistic diameter grain size of 0.78mm for the bay because is computed as the mean value for the entire area according to the dataset. This experiment is compared with \textbf{smith s2.65 d0.1} to establish a comparison about how the changes on the diameter grain size can affect the estimation of $H_s$ for the simulation period. The $H_s$ series are presented below.
 
 \begin{figure}[H]
     \centering
@@ -377,7 +380,7 @@ The following experiment is smith s2.65 d0.78 which employs a more realistic dia
     \label{fig:hs_smith_def_vs_smith_0.78}
 \end{figure}
 
-The largest $H_s$ values for each station are better estimated by \textbf{smith s2.65 d0.1} than \textbf{smith s2.65 d0.78}, but the differences are not larger than 0.03 m. This behaviour is quite reasonable based on the fact that ... \textcolor{red}{statement about why larger diameters can increase bottom friction dissipation}.
+The largest $H_s$ values for each station are better estimated by \textbf{smith s2.65 d0.1} than \textbf{smith s2.65 d0.78}, but the differences are not larger than 0.03 m. This behaviour is quite reasonable based on the fact that larger diameters trend to increase the Nikurade roughness, $k_s$ (see equation 11 in \textcite{Smith2011})
 
 \begin{figure}[H]
     \centering
@@ -395,7 +398,7 @@ The changes are not enough strong to modify the model skills when the experiment
     \label{fig:hs_smith_0.78_vs_smith_dvar}
 \end{figure}
 
-\textbf{smith s2.65 dvar} and \textbf{smith s2.65 d0.78} were compared to evaluate the effect of a most realistic diameter grain size information in the model. Despite the generation of the sediment diameter map, the largest $H_s$ values for each station barely increase between 0.01 and 0.03 m as it is depicted in the figure XX. Stations like Sandringham still shows a systematic underestimation of the $H_s$ values and the maximum modelled $H_s$ value is still 0.5 m under the observation. 
+\textbf{smith s2.65 dvar} and \textbf{smith s2.65 d0.78} were compared to evaluate the effect of a most realistic diameter grain size information in the model. Despite the generation of the sediment diameter map, the largest $H_s$ values for each station barely increase between 0.01 and 0.03 m as it is depicted in the figure \ref{fig:hs_smith_0.78_vs_smith_dvar}. Stations like Sandringham still shows a systematic underestimation of the $H_s$ values and the maximum modelled $H_s$ value is still 0.5 m under the observation. 
 
 \begin{figure}[H]
     \centering
@@ -414,7 +417,7 @@ IF (VARFR .AND. IBOT.EQ.5) THEN                                 41.51
 ENDIF
 \end{lstlisting}
 
-Where \verb|IBOT| is an indicator for the bottom friction which is specified in the file \verb|swancom.ftn|
+Where \verb|IBOT| is an indicator for the bottom friction which is specified in the file \verb|swancom.ftn|.
 
 \begin{lstlisting}[language=Fortran]
 !     IBOT              Indicator for bottom friction
@@ -424,7 +427,36 @@ Where \verb|IBOT| is an indicator for the bottom friction which is specified in 
 !                       IBOT = 3  Madsen bottom dissipation model
 !                       IBOT = 5  bottom dissipation due to ripples
 \end{lstlisting}
-      
+
+\verb|VARFR| is \verb|True| by default according to the file \verb|swanpre1.ftn| when the \verb|READinp| command is called to enter bottom friction information.
+
+\begin{lstlisting}[language=Fortran]
+!   READinp    BOTtom/WLevel/CURrent/FRiction/WInd/COORdinates/              &
+!              NPLAnts/TURB/MUDL/AICE/HICE/HSS/TSS/DSS                       &
+!        [fac]  / 'fname1'        \
+!               \ SERIES 'fname2' /  [idla] [nhedf] ([nhedt]) (nhedvec])     &
+!        FREE / FORMAT 'form' / [idfm] / UNFORMATTED
+!
+!   ==================================================================
+!
+      CALL INKEYW ('REQ',' ')
+      IGR2 = 0
+      IF (KEYWIS ('BOT')) THEN
+        IGR1      = 1
+        LOGCOM(3) = .TRUE.                                                30.21
+      ELSE IF (KEYWIS ('CUR')) THEN
+        IGR1 = 2
+        IGR2 = 3
+        ICUR = 1
+      ELSE IF (KEYWIS ('FR')) THEN
+        IGR1   = 4
+        VARFR  = .TRUE.
+        MCMVAR = MCMVAR + 2                                               40.00
+        JFRC2  = MCMVAR - 1                                               40.00
+        JFRC3  = MCMVAR                                                   40.00
+        ALOCMP = .TRUE.                                                   40.97
+\end{lstlisting}
+    
 Finally, a last experiment was made to evaluate a most physical specific gravity for the bay. The default value is 2.65 based on the original parametrization, but based on the predominance of sublitoral mud, a most representative value for PPB would be 2.75. This value was tested in the experiment \textbf{smith s2.75 d0.01} and it was compared with \textbf{smith s2.65 d0.01}. The $H_s$ variability looks exactly identical for both simulations and the largest $H_s$ modelled values are the same. 
 
 \begin{figure}[H]
@@ -443,19 +475,19 @@ The scatter plots end up showing the same distribution of the measured and model
     \label{fig:scatter_smith_s2.65_vs_smith_s2.75}
 \end{figure}
 
-As long as smith parametrization in SWAN does not include spatial variability of diameter grain size and specific gravity, a most realistic scenario for the wave modelling in PPB can not be tested and the best configuration that can be used is \textcolor{red}{XXYYZZ}. 
+As long as \textcite{Smith2011} parametrization in SWAN does not include spatial variability of diameter grain size and specific gravity, a most realistic scenario for the wave modelling in PPB can not be tested and the best configuration that can be used is \textbf{smith s2.65 d0.78}. 
 
 \section{Simulation results including vegetation}
 
 \subsection{A vegetation test case}
 
-Initially, the vegetation test case for COAWST was simulated to verify the correct performance of the vegetation module and its interaction with SWAN and ROMS \parencite{Beudin2017}. A description and a scheme of the test case is presented below 
+Initially, the vegetation test case for COAWST was simulated to verify the correct performance of the vegetation module and its interaction with SWAN and ROMS \parencite{Beudin2017}. A description and a scheme of the test case is presented below. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.6]{plots/vegetation_test.png}
-    \caption{}
-    \label{fig:}
+    \caption{Description of the vegetation test presented in the COAWST user manual \parencite{Warner2010}}
+    \label{fig:veg_test_scheme}
 \end{figure}
 
 It is worth to mention that the southern edge is closed (zero gradient condition) and the western and eastern sides have a zero gradient boundary condition for the flow and an absorbing condition for the wave energy. \textcite{Beudin2017} demonstrated the effect of vegetation patch on the middle of the domain throughout the depth-averaged velocity at peak flood as it shown in figure \ref{fig:depth_avg_vel_1}
@@ -478,14 +510,47 @@ It is worth to mention that the southern edge is closed (zero gradient condition
 \label{fig:grid_bathy_PPB}
 \end{figure}
 
-\subsection{An idealized case}
+\subsection{An idealised case}
+
+Before moving to the ROMS-SWAN coupled run, an initial simulation was made only with SWAN using the grid that was adapted from the ROMS grid to the wave model. The ROMS grid points are shown below.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{plots/roms_grid.png}
+    \caption{Grid points for ROMS and SWAN in the idealised vegetation case for PPB}
+    \label{fig:roms_swan_grid_points}
+\end{figure}
+
+However, when SWAN is running an error with the grid angle occurs for most of the grid points as it can be seen in the \verb|PRINT| file.
+
+\begin{lstlisting}
+     READINP BOTTOM  1 './in/swan_bathy_veg_PPB.bot' 4 0 FREE
+ ** Error            : Grid angle <0 or >180 degrees
+   1  6       144.6957       -38.3291   1  7       144.6275       -38.3301   0  7       144.6271       -38.3298
+ ** Error            : Grid angle <0 or >180 degrees
+   1  7       144.6275       -38.3301   0  7       144.6271       -38.3298   0  6       144.6953       -38.3295
+ ** Error            : Grid angle <0 or >180 degrees
+   1  9       144.6924       -38.3294   1 10       144.6275       -38.3274   0 10       144.6271       -38.3271
+\end{lstlisting}
+
+Those points are finally removed from the computational grid, so the simulation is not succesfully executed.
+
+\begin{lstlisting}
+    ** Warning          : Point removed from computational grid
+Point with index (     1,     2) was removed from computational grid, because it is part of a 1D configuration or 1D connection.
+ ** Warning          : Point removed from computational grid
+Point with index (     1,     5) was removed from computational grid, because it is part of a 1D configuration or 1D connection.
+ ** Warning          : Point removed from computational grid
+Point with index (     1,    74) was removed from computational grid, because it is part of a 1D configuration or 1D connection.
+\end{lstlisting}
 
 \section{Conclusions and recommendations}
 
-This report summaries the work done in Stage 1 of the Wave-Hydrodynamic Modelling research project funded by the Department of Energy, Environment and Climate Action (DEECA). It focuses on updating the PPB wave-ocean hindcast datasets  for 5 different SLR scenarios (0.0 m, 0.5 m, 0.8 m, 1.1 m and 1.4 m) to 32 years outputted for every hour (hourly interval) using the state of the art wave physics (ST6) and the newly ERA5 atmospheric forcing field with the wind field locally adjusted to optimise the wave model performance which was validated against the operational wave buoy network recently deployed within the Bay.  
-Although every effort has been made to produce a high quality hindcast dataset up to present time, it is believed that a new version of this dataset will be made available when there is a new or an improved atmospheric product released to the public (e.g. ERA6). Other organisations who wished to use this dataset should contact DEECA for the data permission and the University of Melbourne for a consultation and guidance. 
+This report summaries the work done in the Wave-Hydrodynamic Modelling research project funded by the Department of Energy, Environment and Climate Action (DEECA). Different configurations for two of the existing bottom friction parameterizations in SWAN were tested in PPB. The default setup for \textcite{Smith2011} evidenced a better performance than \textcite{Madsen_Poon_Graber_1988} for the one-month simulation period in the bay. Most of the stations show underestimation of $H_s$ and Sandringham station exhibit the largest systematic bias. The model represents the $H_s$ variability correctly at most of the time in each station, but it's not enough capable to represent the $H_s$ peaks. On the other hand, more realistic average value for the diameter grain size (0.78mm) and specific gravity (2.75) for \textcite{Smith2011} were evaluated with no improvement of the $H_s$ series regarding the default experiments.  Using regular grids for the specific gravity and diameter grain size were intended to offer the most physical configuration for PPB because the existence of different habitat and soil types, however it was found that \textcite{Smith2011} was implemented in the SWAN source code without allowing the use of maps for the input parameters.\\  
 
-% \textcolor{red}{The PPB is arguably one of the most important environmental, social and economic asset in Victoria. Most of the population that lives near coastal areas in PPB could be exposed to coastal erosion and flooding hazards induced by sea level rise. An unstructured grid coupled modelling system SCHISM-WWMII is purposed and configured to evaluate the effect of different sea level change scenarios on the shoreline dynamic with a high-resolution mesh used to capture the complex coastal shoreline and bathymetry in PPB. Additionally, a real-time buoy network has been deployed to monitor wave variables in PPB with the aim of calibrating and validating the aforementioned coupled modelling system. Calibration and validation processes have shown an overall good agreement between the modelled values and the SWH values recorded by most of the buoys. Werribee, Central PPB, and Indented Head stations show overestimations of the higher $H_{s}$ values recorded during the simulation period, while underestimation of SWH peak values during a storm in Mt. Eliza station was recorded in late October. It was corrected by a local wind scaling. A configuration with no wind forcing and regional wind scaling showed the best agreement with the buoy measurements. This modelling system was then used to simulate five different sea level hindcast scenarios and the results are prepared to build the probability distribution of the extreme $H_{s}$ and sea level values.}
+Regarding the evaluation of the effects of the vegetation in the wave dumping, a vegetation test case for COAWST was initially used to verify the correct performance of the vegetation module. A comparison of the depth-averaged velocities at peak flood in a rectangular grid with a vegetation path at the centre exhibited that the model compiled in Spartan solved properly the wave-current interaction. An idealised case (no wind forcing) for PPB were then prepared with the correct input files for SWAN and ROMS, but a problem with the definition of the curvilinear grid is presented.\\
+
+Further work has to be done to incorporate the spatial variability of the input parameters in \textcite{Smith2011} in the source code. The revision of the curvilinear grid also has to be carried out in order to obtain the first results for the wave-current interaction in PPB.
 
 \newpage
 \section*{Acknowledgements}
